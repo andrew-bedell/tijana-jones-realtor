@@ -121,6 +121,75 @@ const REVIEWS = [
   },
 ];
 
+type Area = { name: string; blurb: string; range: string; detail: string };
+
+// Tijana's service areas (from the marquee). Price ranges are illustrative.
+const AREAS: Area[] = [
+  {
+    name: "Austin",
+    blurb: "Live-music capital — walkable core, endless neighborhoods",
+    range: "$450K–$2M+",
+    detail:
+      "From downtown high-rises to established leafy neighborhoods, Austin offers every lifestyle and stays in constant demand. Tijana knows which pockets fit your budget and your day-to-day.",
+  },
+  {
+    name: "Lakeway",
+    blurb: "Resort living on Lake Travis — golf, marinas, Hill Country views",
+    range: "$600K–$3M+",
+    detail:
+      "A favorite for luxury buyers and second homes, Lakeway pairs lakeside recreation with gated communities and championship golf, just 30 minutes from downtown.",
+  },
+  {
+    name: "Round Rock",
+    blurb: "Top schools, family suburbs, quick tech-corridor commute",
+    range: "$350K–$700K",
+    detail:
+      "Round Rock blends highly-rated schools, master-planned neighborhoods, and easy access to Austin's tech employers — a reliable pick for families and steady appreciation.",
+  },
+  {
+    name: "Georgetown",
+    blurb: "Historic square, Sun City, small-town charm",
+    range: "$350K–$800K",
+    detail:
+      "Anchored by one of Texas's prettiest courthouse squares and the popular Sun City 55+ community, Georgetown offers warmth and value just north of Austin.",
+  },
+  {
+    name: "Liberty Hill",
+    blurb: "New builds, acreage, room to grow",
+    range: "$350K–$900K",
+    detail:
+      "One of the area's fastest-growing communities — newer construction and larger lots for buyers who want space at the edge of the Hill Country.",
+  },
+  {
+    name: "Kyle",
+    blurb: "Affordable new construction, fast-growing, easy I-35 access",
+    range: "$280K–$500K",
+    detail:
+      "A standout for value, Kyle offers newer homes at accessible price points with quick I-35 access to both Austin and San Marcos.",
+  },
+  {
+    name: "Buda",
+    blurb: "Small-town feel, quick Austin commute, strong value",
+    range: "$300K–$550K",
+    detail:
+      "Buda keeps its small-town character while sitting minutes from south Austin — a local favorite for first-time buyers and move-up families.",
+  },
+  {
+    name: "Manor",
+    blurb: "Up-and-coming, new communities, value near Austin",
+    range: "$280K–$450K",
+    detail:
+      "East of the city, Manor is one of the metro's best-value stories, with new master-planned neighborhoods and fast growth.",
+  },
+  {
+    name: "Jonestown",
+    blurb: "Quiet lake living, Hill Country views",
+    range: "$350K–$1.2M",
+    detail:
+      "Tucked on the north shore of Lake Travis, Jonestown offers relaxed lakeside living and Hill Country views with weekend access to the water.",
+  },
+];
+
 /* ------------------------------------------------------------------ */
 /*  Icons                                                              */
 /* ------------------------------------------------------------------ */
@@ -243,6 +312,7 @@ export default function Home() {
   const [showSticky, setShowSticky] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [openArea, setOpenArea] = useState<number | null>(0);
   const [counts, setCounts] = useState({ homes: 365, vol: 102, yrs: 7, rev: 44 });
 
   // Animated stat counters (respects prefers-reduced-motion)
@@ -340,6 +410,7 @@ export default function Home() {
           <nav className="nav-desktop" style={{ gap: 26, marginLeft: 16, flexWrap: "nowrap" }}>
             <a className="nav-link" href="#video">Meet Tijana</a>
             <a className="nav-link" href="#why">Why Tijana</a>
+            <a className="nav-link" href="#areas">Areas</a>
             <a className="nav-link" href="#listings">Listings</a>
             <a className="nav-link" href="#sold">Sold</a>
             <a className="nav-link" href="#reviews">Reviews</a>
@@ -373,6 +444,7 @@ export default function Home() {
             {[
               { href: "#video", label: "Meet Tijana" },
               { href: "#why", label: "Why Tijana" },
+              { href: "#areas", label: "Areas" },
               { href: "#listings", label: "Listings" },
               { href: "#sold", label: "Sold" },
               { href: "#reviews", label: "Reviews" },
@@ -520,6 +592,47 @@ export default function Home() {
                 <p style={{ color: "#6B5F52", fontSize: "0.9375rem", margin: 0 }}>{c.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ AREA GUIDE ============ */}
+      <section id="areas" className="section" style={{ background: "#FFFFFF" }}>
+        <div className="container">
+          <div data-reveal style={{ maxWidth: 760, margin: "0 auto 40px", textAlign: "center" }}>
+            <div className="kicker">Areas served</div>
+            <h2 className="h2" style={{ margin: "0 0 14px" }}>Every corner of greater Austin. One agent who knows them all.</h2>
+            <p className="lead">From Lake Travis luxury to fast-growing suburbs — pick an area to see the vibe and what homes typically run.</p>
+          </div>
+          <div data-reveal style={{ maxWidth: 820, margin: "0 auto" }}>
+            <div className="card" style={{ overflow: "hidden" }}>
+              {AREAS.map((a, idx) => {
+                const open = openArea === idx;
+                return (
+                  <div key={a.name} style={{ borderTop: idx === 0 ? "none" : "1px solid #ECE8DF" }}>
+                    <button
+                      onClick={() => setOpenArea(open ? null : idx)}
+                      aria-expanded={open}
+                      style={{ width: "100%", background: open ? "#FCFBF8" : "#fff", border: 0, cursor: "pointer", padding: "20px 24px", display: "flex", alignItems: "center", gap: 16, textAlign: "left", transition: "background 160ms ease" }}
+                    >
+                      <span style={{ flex: 1, minWidth: 0 }}>
+                        <span className="ff-arch" style={{ display: "block", fontSize: "1.15rem", fontWeight: 800, letterSpacing: "-0.01em", color: "#1C1613" }}>{a.name}</span>
+                        <span style={{ display: "block", fontSize: "0.9375rem", color: "#6B5F52", marginTop: 3 }}>{a.blurb}</span>
+                      </span>
+                      <span className="ff-arch" style={{ fontWeight: 800, color: "#B49B67", fontSize: "0.95rem", whiteSpace: "nowrap", fontFeatureSettings: "'tnum'" }}>{a.range}</span>
+                      <ChevronIcon open={open} />
+                    </button>
+                    {open && (
+                      <div style={{ padding: "0 24px 22px" }}>
+                        <p style={{ color: "#3D332A", margin: "0 0 14px", maxWidth: 640 }}>{a.detail}</p>
+                        <a href="#contact" className="btn btn-dark btn-sm">Explore {a.name} with Tijana</a>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            <p style={{ fontSize: "0.8125rem", color: "#948875", textAlign: "center", marginTop: 16 }}>Price ranges are illustrative and vary by home, condition, and market.</p>
           </div>
         </div>
       </section>
@@ -786,6 +899,14 @@ function Field({ label, required, optional, children }: { label: string; require
       </span>
       {children}
     </label>
+  );
+}
+
+function ChevronIcon({ open }: { open: boolean }) {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#948875" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round" aria-hidden style={{ flexShrink: 0, transition: "transform 220ms ease", transform: open ? "rotate(180deg)" : "none" }}>
+      <path d="m6 9 6 6 6-6" />
+    </svg>
   );
 }
 
