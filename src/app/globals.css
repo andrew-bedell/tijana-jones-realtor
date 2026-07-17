@@ -187,6 +187,34 @@ section[id] {
   transform: scale(0.985);
 }
 
+/* ---------- persistent demo watermark: top-left corner ribbon ---------- */
+.demo-ribbon {
+  position: fixed;
+  left: -58px;
+  top: 24px;
+  width: 200px;
+  transform: rotate(-45deg);
+  z-index: 200;
+  background: #171310;
+  color: #f3e3c3;
+  font-family: var(--font-archivo), "Archivo", sans-serif;
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+/* On narrow viewports the ribbon would cross the logo — the badge carries the notice there. */
+@media (max-width: 1024px) {
+  .demo-ribbon {
+    display: none;
+  }
+}
+
 /* ---------- cards ---------- */
 .card {
   background: #fff;

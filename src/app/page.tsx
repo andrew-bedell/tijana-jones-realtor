@@ -735,12 +735,11 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* ============ DEMO NOTICE BADGE ============ */}
-      {!showSticky && (
-        <div aria-label="Demonstration site" style={{ position: "fixed", left: 14, bottom: 14, zIndex: 80, background: "rgba(23,19,16,0.9)", color: "#F3E3C3", fontFamily: "var(--font-archivo)", fontWeight: 800, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "8px 14px", borderRadius: 999, boxShadow: "0 8px 22px rgba(0,0,0,0.25)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", pointerEvents: "none" }}>
-          Demo · Illustrative content
-        </div>
-      )}
+      {/* ============ DEMO WATERMARK (persistent ribbon + badge) ============ */}
+      <div className="demo-ribbon" aria-hidden>Demo</div>
+      <div aria-label="Demonstration site — illustrative content" style={{ position: "fixed", left: 14, bottom: showSticky ? 78 : 14, zIndex: 96, background: "rgba(23,19,16,0.92)", color: "#F3E3C3", fontFamily: "var(--font-archivo)", fontWeight: 800, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "8px 14px", borderRadius: 999, boxShadow: "0 8px 22px rgba(0,0,0,0.25)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", pointerEvents: "none", transition: "bottom 300ms cubic-bezier(0.22,1,0.36,1)" }}>
+        Demo · Illustrative content
+      </div>
 
       {/* ============ STICKY CTA BAR ============ */}
       <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, background: "rgba(255,255,255,0.94)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderTop: "1px solid #ECE8DF", boxShadow: "0 -8px 30px rgba(28,22,19,0.12)", transform: showSticky ? "translateY(0)" : "translateY(110%)", transition: `transform 420ms ${EASE}` }}>
