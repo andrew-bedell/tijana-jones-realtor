@@ -32,6 +32,8 @@ export const metadata: Metadata = {
     "Liberty Hill",
   ],
   authors: [{ name: "Tijana Jones" }],
+  // Demo site — keep it out of search indexes while it uses illustrative/republished content.
+  robots: { index: false, follow: false },
   openGraph: {
     type: "website",
     locale: "en_US",

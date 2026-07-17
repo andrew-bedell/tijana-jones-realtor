@@ -172,6 +172,21 @@ section[id] {
   box-shadow: inset 0 0 0 2px #fff;
 }
 
+.btn-gold {
+  background: #b49b67;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(180, 155, 103, 0.35);
+}
+.btn-gold:hover {
+  background: #9c8556;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.btn-gold:active {
+  background: #867143;
+  transform: scale(0.985);
+}
+
 /* ---------- cards ---------- */
 .card {
   background: #fff;

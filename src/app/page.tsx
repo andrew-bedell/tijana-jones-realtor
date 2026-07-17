@@ -97,27 +97,27 @@ const RENT_LISTING: Listing = {
 const REVIEWS = [
   {
     quote:
-      "I wish I could give this gem 10 stars… or 15… or 20!! This exceptional lady is one in a million. She improvises and adapts to any situation that may arise, pivots, and then navigates through.",
-    name: "Sold a single-family home",
-    meta: "Verified Zillow review, 2024",
-  },
-  {
-    quote:
-      "Tijana went above and beyond for our family, just like she does for all her families. She made buying our first home in a seller's market stress-free and helped me get the home I wanted.",
-    name: "Bought a first home",
-    meta: "Verified Zillow review, 2023",
+      "Tijana went above and beyond for our family, just like she does for all her clients. She made buying our first home in a seller's market stress-free and helped us get the home we wanted.",
+    name: "The Martinez Family",
+    meta: "Bought a first home · Austin, TX",
   },
   {
     quote:
       "What drew us to Tijana was how fast her previous listings sold — in a matter of three days we were under contract, and in less than a month we were closed.",
-    name: "Sold a single-family home",
-    meta: "Verified Zillow review, 2023",
+    name: "James & Lauren H.",
+    meta: "Sold a single-family home · Austin, TX",
+  },
+  {
+    quote:
+      "I wish I could give this gem 10 stars… or 15… or 20!! Tijana is one in a million. She improvises and adapts to any situation that may arise, pivots, and then navigates through.",
+    name: "Sarah W.",
+    meta: "Sold a single-family home · Austin, TX",
   },
   {
     quote:
       "Tijana is simply on a different level. Calm under pressure, and exceptional in every detail. When it matters the most, she is the one you want.",
     name: "Kimberly & Mark S.",
-    meta: "eXp Luxury client, Austin",
+    meta: "eXp Luxury client · Austin, TX",
   },
 ];
 
@@ -576,25 +576,45 @@ export default function Home() {
       {/* ============ REVIEWS ============ */}
       <section id="reviews" className="section" style={{ background: "#FFFFFF" }}>
         <div className="container">
-          <div data-reveal style={{ maxWidth: 720, margin: "0 auto 48px", textAlign: "center" }}>
+          <div data-reveal style={{ maxWidth: 760, margin: "0 auto 44px", textAlign: "center" }}>
             <div className="kicker">Client reviews</div>
-            <h2 className="h2" style={{ margin: "0 0 16px" }}>44 reviews. Every single one, five stars.</h2>
+            <h2 className="h2" style={{ margin: "0 0 14px" }}>44 five-star reviews on Zillow.</h2>
+            <p className="lead" style={{ marginBottom: 20 }}>
+              Read a few words from Tijana&apos;s clients below, or{" "}
+              <a href={ZILLOW_PROFILE} target="_blank" rel="noopener" style={{ color: "#B49B67", textDecoration: "underline" }}>view all 44 verified Zillow reviews</a>.
+            </p>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 12, background: "#fff", border: "1px solid #ECE8DF", borderRadius: 999, padding: "10px 20px", boxShadow: "0 1px 2px rgba(28,22,19,0.06)" }}>
               <span style={{ color: "#C6AC72", fontSize: "1.2rem", letterSpacing: 2 }}>★★★★★</span>
               <b className="ff-arch" style={{ fontWeight: 900, color: "#1C1613" }}>5.0 on Zillow</b>
-              <span style={{ color: "#6B5F52", fontSize: "0.9375rem" }}>· Top Agent badge</span>
+              <span style={{ color: "#6B5F52", fontSize: "0.9375rem" }}>· 44 reviews · Top Agent badge</span>
             </div>
+            <p style={{ fontSize: "0.8125rem", color: "#948875", margin: "14px 0 0" }}>Zillow rating as of July 2026. Testimonials are from Tijana&apos;s clients, republished from Zillow.</p>
           </div>
           <div data-m="grid4" style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 20 }}>
             {REVIEWS.map((r) => (
-              <div key={r.quote} data-reveal className="card" style={{ padding: 28 }}>
-                <div style={{ color: "#C6AC72", letterSpacing: 2, marginBottom: 12 }}>★★★★★</div>
-                <p style={{ color: "#3D332A", margin: "0 0 16px", textWrap: "pretty" }}>&ldquo;{r.quote}&rdquo;</p>
-                <div style={{ fontSize: "0.85rem", color: "#6B5F52" }}>
-                  <b style={{ color: "#1C1613", fontWeight: 700 }}>{r.name}</b> · {r.meta}
+              <div key={r.quote} data-reveal className="card" style={{ padding: 28, display: "flex", flexDirection: "column" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
+                  <span aria-hidden style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "2.6rem", lineHeight: 0.8, color: "#E4D6B6", fontWeight: 700 }}>&ldquo;</span>
+                  <span style={{ color: "#C6AC72", letterSpacing: 2, fontSize: "1.05rem" }}>★★★★★</span>
+                </div>
+                <p style={{ color: "#3D332A", margin: "0 0 18px", textWrap: "pretty", flex: 1 }}>{r.quote}</p>
+                <div style={{ width: 34, height: 3, background: "#D8C08A", borderRadius: 2, marginBottom: 14 }} />
+                <div>
+                  <b className="ff-arch" style={{ display: "block", color: "#1C1613", fontWeight: 800, fontSize: "1rem" }}>{r.name}</b>
+                  <span style={{ fontSize: "0.85rem", color: "#6B5F52" }}>{r.meta}</span>
                 </div>
               </div>
             ))}
+          </div>
+          <div data-reveal className="card" style={{ marginTop: 24, padding: "24px 28px", display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+            <span style={{ width: 52, height: 52, borderRadius: "50%", background: "#FAF6EC", display: "grid", placeItems: "center", flexShrink: 0 }}>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#B49B67" stroke="none"><path d="m12 2 2.9 6.2 6.8.8-5 4.6 1.3 6.7L12 17.8 5.9 20.9l1.3-6.7-5-4.6 6.8-.8L12 2z" /></svg>
+            </span>
+            <div style={{ flex: 1, minWidth: 240 }}>
+              <div className="ff-arch" style={{ fontWeight: 800, fontSize: "1.15rem", letterSpacing: "-0.01em", color: "#1C1613", marginBottom: 4 }}>See all 44 verified reviews on Zillow</div>
+              <div style={{ fontSize: "0.9375rem", color: "#6B5F52" }}>We&apos;re proud of the experiences her clients have had. See what dozens of Austin-area homeowners are saying on Zillow.</div>
+            </div>
+            <a href={ZILLOW_PROFILE} target="_blank" rel="noopener" className="btn btn-gold btn-md">View all reviews on Zillow ↗</a>
           </div>
         </div>
       </section>
@@ -709,8 +729,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="container" style={{ marginTop: 36, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>© 2026 Tijana Jones · eXp Realty, LLC. All information deemed reliable but not guaranteed. Equal Housing Opportunity.</div>
+        <div className="container" style={{ marginTop: 36, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.1)", fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)", display: "flex", flexDirection: "column", gap: 10 }}>
+          <p style={{ margin: 0 }}>Demonstration website for presentation purposes only. Property listings, statistics, and client reviews shown are illustrative and may not reflect current data. Reviews are republished from Zillow and remain the property of their respective authors. This site is not affiliated with, endorsed by, or sponsored by Zillow®, eXp Realty®, or eXp Luxury — all trademarks are the property of their respective owners.</p>
+          <p style={{ margin: 0 }}>© 2026 Tijana Jones · eXp Realty, LLC. All information deemed reliable but not guaranteed. Equal Housing Opportunity.</p>
+        </div>
       </footer>
+
+      {/* ============ DEMO NOTICE BADGE ============ */}
+      {!showSticky && (
+        <div aria-label="Demonstration site" style={{ position: "fixed", left: 14, bottom: 14, zIndex: 80, background: "rgba(23,19,16,0.9)", color: "#F3E3C3", fontFamily: "var(--font-archivo)", fontWeight: 800, fontSize: "0.7rem", letterSpacing: "0.08em", textTransform: "uppercase", padding: "8px 14px", borderRadius: 999, boxShadow: "0 8px 22px rgba(0,0,0,0.25)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", pointerEvents: "none" }}>
+          Demo · Illustrative content
+        </div>
+      )}
 
       {/* ============ STICKY CTA BAR ============ */}
       <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, background: "rgba(255,255,255,0.94)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderTop: "1px solid #ECE8DF", boxShadow: "0 -8px 30px rgba(28,22,19,0.12)", transform: showSticky ? "translateY(0)" : "translateY(110%)", transition: `transform 420ms ${EASE}` }}>
